@@ -118,14 +118,14 @@ Once finished, VS Code will automatically reload **inside the container**.
 ### Installation Via Command line:
 
 ```bash
-git clone https://github.com/JayrodHarv/verilog-remote-dev.git
-cd your-repo-name
+git clone https://github.com/JayrodHarv/{your-repo-name}.git
+cd {your-repo-name}
 ```
 
 ## Updating Your Repo to Get New Features or Bug Fixes
 
 ```bash
-git remote add template https://github.com/<template-owner>/<template-repo>.git
+git remote add template https://github.com/JayrodHarv/verilog-devcontainer-template.git
 git fetch template
 git merge template/main
 ```
