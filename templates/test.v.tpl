@@ -8,7 +8,7 @@ module {{NAME}}_test(
 
     initial begin
         $dumpfile("waves/dump.vcd");
-        $dumpvars(0, {{NAME}});
+        $dumpvars(0, {{NAME}}_tb);
 
         file_descriptor = $fopen("logs/{{NAME}}.log", "w"); // opens a log file to write test logs to
 
