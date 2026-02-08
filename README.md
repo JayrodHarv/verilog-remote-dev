@@ -77,7 +77,7 @@ This creates a new repository with no Git history connection to the template.
 1. Open **VS Code**
 2. Press: **ctrl+shift+p**
 3. Type and select **Git: Clone**
-4. Copy Github repository URL by clicking the **Code** button and Paste the GitHub repository URL: **https://github.com/{Your GitHub Profile}/{Your GitHub Repo Name}.git**
+4. Copy Github repository URL by clicking the **Code** button and Paste the GitHub repository URL: **https://github.com/{your-github-profile-name}/{your-github-repo-name}.git**
 5. Choose a folder on your computer where the repo should go
 6. When prompted, select: **Open**
 
