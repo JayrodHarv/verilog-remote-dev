@@ -6,6 +6,7 @@ VERILATOR= verilator
 RTL_DIR  = rtl
 TB_DIR   = tb
 TEST_DIR = test
+LOG_DIR  = logs
 BUILD    = build
 WAVES    = waves
 
@@ -16,13 +17,13 @@ TEST_SRCS = $(wildcard $(TEST_DIR)/*.v)
 SIM_OUT   = $(BUILD)/sim.out
 IV_FLAGS  = -g2001
 
-all: sim
+all: sim show-logs
 
 sim: $(SIM_OUT)
 	$(VVP) $(SIM_OUT)
 
 $(SIM_OUT): $(RTL_SRCS) $(TB_SRCS) $(TEST_SRCS)
-	mkdir -p $(BUILD)
+	mkdir -p $(BUILD) $(LOG_DIR)
 	$(IVERILOG) $(IV_FLAGS) -o $(SIM_OUT) $(RTL_SRCS) $(TB_SRCS) $(TEST_SRCS)
 
 waves: sim
@@ -33,5 +34,13 @@ lint:
 
 clean:
 	rm -rf $(BUILD) $(WAVES)
+
+show-logs:
+	@echo "===== TEST LOGS ====="
+	@ls $(LOG_DIR)/*.log >/dev/null 2>&1 && \
+	for f in $(LOG_DIR)/*.log; do \
+		echo "---- $$f ----"; \
+		cat $$f; \
+	done || echo "(no logs found)"
 
 .PHONY: all sim waves lint clean

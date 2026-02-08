@@ -13,7 +13,6 @@ WAVES    = waves
 RTL_SRCS  = $(wildcard $(RTL_DIR)/*.v)
 TB_SRCS   = $(wildcard $(TB_DIR)/*_tb.v)
 TEST_SRCS = $(wildcard $(TEST_DIR)/*.v)
-LOG_SRCS  = $(wildcard $(LOG_DIR)/*.log)
 
 SIM_OUT   = $(BUILD)/sim.out
 IV_FLAGS  = -g2001
