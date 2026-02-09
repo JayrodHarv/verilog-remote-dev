@@ -9,11 +9,9 @@ RUN apt-get update && apt-get install -y \
     curl \
     wget \
     ca-certificates \
-    python3 \
-    python3-pip \
     gtkwave \
     iverilog \
-    jq \
+    sudo \
     && rm -rf /var/lib/apt/lists/*
 
 # ---- Install Verible (formatter + language server) ----
@@ -34,8 +32,6 @@ ARG USER_GID=1000
 
 RUN groupadd --gid $USER_GID $USERNAME \
     && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME \
-    && apt-get update \
-    && apt-get install -y sudo \
     && echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 USER $USERNAME
