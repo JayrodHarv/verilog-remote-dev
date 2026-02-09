@@ -27,8 +27,7 @@ Using VS Code Dev Containers, this project makes setting up an environment for d
 
 - Fully reproducible VS Code Dev Container
 - Tools for verilog development and simulation pre-installed
-    - **Icarus Verilog** – compilation & simulation
-    - **Verilator** – linting
+    - **Icarus Verilog** – simulation compilation and linting
     - **GTKWave** – waveform viewing
     - **Verible** – formatting & language server
 - Project-based workflow:
