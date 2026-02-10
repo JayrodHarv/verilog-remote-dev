@@ -25,9 +25,12 @@ mkdir -p \
   $ROOT/logs
 
 # Copy templates
-sed "s/{{NAME}}/$NAME/g" templates/module.v.tpl > $ROOT/rtl/$NAME.v
-sed "s/{{NAME}}/$NAME/g" templates/tb.v.tpl > $ROOT/tb/${NAME}_tb.v
-sed "s/{{NAME}}/$NAME/g" templates/test.v.tpl > $ROOT/test/${NAME}_test.v
+# Escape sed replacement special chars (/, &)
+esc_name=$(printf '%s' "$NAME" | sed -e 's/[\/&]/\\&/g')
+
+sed "s/{{NAME}}/$esc_name/g; s/{{PROJ}}/$esc_name/g" templates/module.v.tpl > $ROOT/rtl/$NAME.v
+sed "s/{{NAME}}/$esc_name/g; s/{{PROJ}}/$esc_name/g" templates/tb.v.tpl > $ROOT/tb/${NAME}_tb.v
+sed "s/{{NAME}}/$esc_name/g; s/{{PROJ}}/$esc_name/g" templates/test.v.tpl > $ROOT/test/${NAME}_test.v
 
 # Copy Makefile template
 # Do not create per-project Makefiles; root Makefile manages projects centrally.
