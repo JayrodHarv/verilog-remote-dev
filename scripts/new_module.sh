@@ -36,7 +36,11 @@ fi
 
 mkdir -p "$DEST"
 
-sed "s/{{NAME}}/$NAME/g; s/{{PROJ}}/$PROJECT/g" "$TEMPLATE" > "$DEST/$FILENAME"
+# escape sed replacement special chars (/, &)
+esc_name=$(printf '%s' "$NAME" | sed -e 's/[\/&]/\\&/g')
+esc_proj=$(printf '%s' "$PROJECT" | sed -e 's/[\/&]/\\&/g')
+
+sed "s/{{NAME}}/$esc_name/g; s/{{PROJ}}/$esc_proj/g" "$TEMPLATE" > "$DEST/$FILENAME"
 
 echo "$TYPE '$NAME' created in project '$PROJECT'"
 echo "→ $DEST/$FILENAME"
