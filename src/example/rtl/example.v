@@ -4,9 +4,11 @@ module example (
     input a,
     input b,
     input c,
-    output y
+    output reg y
 );
 
-    assign y = a | c;
+    always @(a or c) begin
+        y = a | c;
+    end
 
 endmodule

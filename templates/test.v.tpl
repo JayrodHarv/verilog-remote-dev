@@ -1,6 +1,6 @@
 `timescale 1ns/1ps // sets the time unit to 1ns and the time precision to 1ps
 
-module example_test(
+module {{NAME}}_test(
     output reg a,
     output reg b,
     output reg c,
